@@ -1,0 +1,667 @@
+:root {
+    --title-color: #000000; /* Default title color changed to black */
+    --icon-color: #000000; /* Default icon name color changed to black */
+    --title-shadow-color: rgba(255, 255, 255, 0.8); /* Default title shadow color changed to white for better visibility on black */
+    --icon-shadow-color: rgba(255, 255, 255, 0.8); /* Default icon name shadow color changed to white for better visibility on black */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow: auto;
+    background-color: #333;
+    padding: 20px;
+}
+
+.controls {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+.controls label {
+    display: block;
+    margin: 10px 0 5px 0;
+    font-weight: bold;
+}
+
+.controls select,
+.controls button {
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background: #333;
+    color: white;
+    cursor: pointer;
+}
+
+#save-button {
+    background: #4CAF50; /* Green background for save button */
+    color: white;
+    font-weight: bold;
+}
+
+#save-ultra-hd-button {
+    background: #2196F3; /* Blue background for ultra HD save button */
+    color: white;
+    font-weight: bold;
+}
+
+.controls select:hover,
+.controls button:hover {
+    background: #555;
+}
+
+#save-button:hover {
+    background: #45a049; /* Darker green on hover */
+}
+
+#save-ultra-hd-button:hover {
+    background: #0b7dda; /* Darker blue on hover */
+}
+
+/* Style the color selectors to match the theme */
+#title-color-selector,
+#icon-color-selector {
+    background: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+.banner-container {
+    width: 2560px !important;
+    height: 1440px !important;
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    background-color: #000;
+}
+
+.banner-container.desktop,
+.banner-container.tablet,
+.banner-container.mobile {
+    width: 2560px !important;
+    height: 1440px !important;
+}
+
+.banner-container.cutline {
+    width: 2560px !important;
+    height: 1440px !important;
+}
+
+.banner-container.layout-desktop,
+.banner-container.layout-tablet,
+.banner-container.layout-mobile {
+    width: 2560px !important;
+    height: 1440px !important;
+}
+
+.title-overlay {
+    position: absolute;
+    top: 40%; /* Keep the same vertical positioning */
+    left: 53%; /* Moved right by 2% (from 51%) */
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+}
+
+/* New styling for the split title */
+.title-name {
+    font-family: 'Anton', sans-serif; /* Use Anton font */
+    font-size: 6rem;
+    margin: 0;
+    color: var(--title-color); /* Use CSS variable for title color */
+    /* Enhanced text-shadow with increased blur */
+    text-shadow: 5px 5px 1px var(--title-shadow-color); /* Use CSS variable for shadow color */
+    letter-spacing: 7px; /* Increased letter spacing from 2px to 7px (+5px) */
+    display: block;
+    /* Left-align the text within the centered container */
+    text-align: left;
+    /* Set a max width to control alignment */
+    max-width: 1200px;
+    /* Center the block itself */
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase; /* Make text all caps */
+}
+
+.title-name:first-child {
+    margin-bottom: -50px; /* Increase negative margin to bring lines closer */
+    position: relative;
+    top: 0px; /* Reset the top positioning */
+}
+
+.banner-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('Banner.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.banner-container.flipped::before {
+    transform: scaleX(-1);
+}
+
+.banner-container.font-default h1,
+.banner-container.font-default .content,
+.banner-container.font-default .cutline-content {
+    font-family: Arial, sans-serif;
+}
+
+.banner-container.font-comic h1,
+.banner-container.font-comic .content,
+.banner-container.font-comic .cutline-content {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.banner-container.font-georgia h1,
+.banner-container.font-georgia .content,
+.banner-container.font-georgia .cutline-content {
+    font-family: Georgia, serif;
+}
+
+.banner-container.font-verdana h1,
+.banner-container.font-verdana .content,
+.banner-container.font-verdana .cutline-content {
+    font-family: Verdana, sans-serif;
+}
+
+/* Specific banner images - ensure they show properly even with overlays */
+.banner-container.banner02::before {
+    background-image: url('Banner02.png');
+    z-index: 0; /* Ensure it's behind overlay */
+}
+
+.banner-container.banner03::before {
+    background-image: url('Banner03.png');
+    z-index: 0; /* Ensure it's behind overlay */
+}
+
+.banner-container.banner04::before {
+    background-image: url('Banner04.png');
+    z-index: 0; /* Ensure it's behind overlay */
+}
+
+.banner-container.banner05::before {
+    background-image: url('Banner05.png');
+    z-index: 0; /* Ensure it's behind overlay */
+}
+
+.banner-container.banner06::before {
+    background-image: url('Banner06.png');
+}
+
+.banner-container.banner07::before {
+    background-image: url('Banner07.png');
+}
+
+.banner-container.banner08::before {
+    background-image: url('Banner08.png');
+}
+
+.banner-container.banner09::before {
+    background-image: url('Banner09.png');
+}
+
+.banner-container.banner10::before {
+    background-image: url('Banner10.png');
+}
+
+/* Solid black overlay for all layouts except cutline */
+.banner-container.desktop-overlay::before,
+.banner-container.tablet-overlay::before,
+.banner-container.mobile-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000; /* Pure solid black */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Hide content (icons) when showing solid black overlay, but keep title visible */
+.banner-container.desktop-overlay .content,
+.banner-container.tablet-overlay .content,
+.banner-container.mobile-overlay .content {
+    display: none;
+}
+
+/* Keep title positioning consistent with cutline view */
+.banner-container.desktop-overlay .title-overlay,
+.banner-container.tablet-overlay .title-overlay,
+.banner-container.mobile-overlay .title-overlay {
+    top: 40%; /* Keep the same vertical positioning */
+    left: 53%; /* Moved right by 2% (from 51%) */
+    transform: translateX(-50%);
+}
+
+/* Viewport windows - these create the "see-through" areas */
+.banner-container.desktop-overlay .viewport-window,
+.banner-container.tablet-overlay .viewport-window,
+.banner-container.mobile-overlay .viewport-window {
+    position: absolute;
+    background: transparent;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Desktop viewport - 2560 × 423 */
+.banner-container.desktop-overlay .viewport-window {
+    top: 509.5px;
+    left: 0;
+    width: 100%;
+    height: 423px;
+    box-shadow: 0 0 0 9999px #000;
+}
+
+/* Tablet viewport - 1855 × 423 */
+.banner-container.tablet-overlay .viewport-window {
+    top: 509.5px;
+    left: 352.5px;
+    width: 1855px;
+    height: 423px;
+    box-shadow: 0 0 0 9999px #000;
+}
+
+/* Mobile viewport - 1546 × 423 */
+.banner-container.mobile-overlay .viewport-window {
+    top: 509.5px;
+    left: 507px;
+    width: 1546px;
+    height: 423px;
+    box-shadow: 0 0 0 9999px #000;
+}
+
+.safe-area-indicator {
+    position: absolute;
+    top: 0;
+    left: 507px;
+    width: 1546px;
+    height: 100%;
+    border: 2px dashed rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+    display: none;
+    z-index: 2;
+}
+
+.banner-container:not(.full):not(.cutline) .safe-area-indicator {
+    display: block;
+}
+
+.cutline-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: none;
+    z-index: 2;
+}
+
+.banner-container.cutline .cutline-overlay {
+    display: block;
+}
+
+.cutline-overlay::after {
+    content: "";
+    position: absolute;
+    top: 509.5px;
+    left: 0;
+    width: 100%;
+    height: 423px;
+    border: 2px solid rgba(255, 0, 0, 0.8);
+    box-sizing: border-box;
+}
+
+.cutline-overlay::before {
+    content: "";
+    position: absolute;
+    top: 509.5px;
+    left: 352.5px;
+    width: 1855px;
+    height: 423px;
+    border: 2px solid rgba(0, 255, 0, 0.8);
+    box-sizing: border-box;
+}
+
+.mobile-indicator {
+    position: absolute;
+    top: 509.5px;
+    left: 507px;
+    width: 1546px;
+    height: 423px;
+    border: 2px solid rgba(0, 0, 255, 0.8);
+    box-sizing: border-box;
+}
+
+.youtube-icon-top {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 5;
+}
+
+.youtube-icon-top img {
+    width: 60px;
+    height: 60px;
+}
+
+.content {
+    position: absolute;
+    top: 59%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.banner-container.cutline .content {
+    display: block;
+    top: 59%;
+}
+
+.content h1 {
+    display: none;
+}
+
+.banner-container .content {
+    top: 59%;
+    width: 1546px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 1546px;
+}
+
+.title-container {
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.social-icons-mobile {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+}
+
+.social-item:nth-last-child(2) {
+    margin-right: 5px;
+}
+
+.social-item:last-child {
+    margin-left: 5px;
+}
+
+.social-item.github-icon {
+    margin-right: 0;
+}
+
+.social-item.website-icon {
+    margin-left: -15px;
+}
+
+.social-item img {
+    width: 65px;
+    height: 65px;
+    transition: transform 0.3s ease;
+}
+
+.social-icon-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 35px;
+}
+
+.social-name {
+    color: var(--icon-color); /* Use CSS variable for icon name color */
+    font-size: 1.45rem;
+    /* Adjusted text-shadow with more appropriate position */
+    text-shadow: 
+        2px 2px 1px var(--icon-shadow-color); /* Use CSS variable for shadow color */
+    text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.banner-container:not(.full) .content h1 {
+    font-size: 3rem;
+}
+
+.banner-container.desktop .content,
+.banner-container.tablet .content,
+.banner-container.mobile .content {
+    font-size: 1.5rem;
+}
+
+.banner-container.desktop .content h1,
+.banner-container.tablet .content h1,
+.banner-container.mobile .content h1 {
+    font-size: 3rem;
+}
+
+.cutline-legend {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: none;
+    z-index: 10;
+}
+
+.banner-container.cutline .cutline-legend {
+    display: block;
+}
+
+.legend-item {
+    margin: 5px 0;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.coordinate-display {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.title-overlay {
+    position: absolute;
+    top: 40%; /* Keep the same vertical positioning */
+    left: 53%; /* Moved right by 2% (from 51%) */
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+}
+
+.cutline-content {
+    display: none;
+}
+
+.cutline-content h1 {
+    display: none;
+}
+
+.cutline-content .title-container {
+    margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+.cutline-content .title-name {
+    font-family: 'Anton', sans-serif; /* Use Anton font */
+    font-size: 6rem;
+    margin: 0;
+    color: var(--title-color); /* Use CSS variable for title color */
+    /* Enhanced text-shadow with increased blur */
+    text-shadow: 5px 5px 1px var(--title-shadow-color); /* Use CSS variable for shadow color */
+    letter-spacing: 7px; /* Increased letter spacing from 2px to 7px (+5px) */
+    display: block;
+    /* Left-align the text within the centered container */
+    text-align: left;
+    /* Set a max width to control alignment */
+    max-width: 1200px;
+    /* Center the block itself */
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase; /* Make text all caps */
+}
+
+.cutline-content .title-name:first-child {
+    margin-bottom: -20px; /* Increase negative margin to bring lines closer */
+    position: relative;
+    top: 0px; /* Reset the top positioning */
+}
+
+.cutline-content .social-icons-mobile {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+.cutline-content .social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px;
+}
+
+.cutline-content .social-item:nth-last-child(2) {
+    margin-right: 5px;
+}
+
+.cutline-content .social-item:last-child {
+    margin-left: 5px;
+}
+
+.cutline-content .social-item.github-icon {
+    margin-right: 0;
+}
+
+.cutline-content .social-item.website-icon {
+    margin-left: -15px;
+}
+
+.cutline-content .social-item img {
+    width: 65px;
+    height: 65px;
+    transition: transform 0.3s ease;
+}
+
+.cutline-content .social-icon-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 35px;
+}
+
+.cutline-content .social-name {
+    color: var(--icon-color); /* Use CSS variable for icon name color */
+    font-size: 1.45rem;
+    /* Adjusted text-shadow with more appropriate position */
+    text-shadow: 
+        2px 2px 1px var(--icon-shadow-color); /* Use CSS variable for shadow color */
+    text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Single line title format */
+.banner-container.single-line-title .title-overlay .title-name:first-child::after {
+    content: " Pavia Basco";
+}
+
+.banner-container.single-line-title .title-overlay .title-name:last-child {
+    display: none;
+}
+
+.banner-container.single-line-title .cutline-content .title-name:first-child::after {
+    content: " Pavia Basco";
+}
+
+.banner-container.single-line-title .cutline-content .title-name:last-child {
+    display: none;
+}
+
+.banner-container.single-line-title .title-overlay .title-name,
+.banner-container.single-line-title .cutline-content .title-name {
+    letter-spacing: 2px; /* Reset to original letter spacing for single line */
+    /* Adjust position for single line title */
+    position: relative;
+    left: -5%; /* Move 5% to the left */
+    top: 1%; /* Move 1% down */
+}

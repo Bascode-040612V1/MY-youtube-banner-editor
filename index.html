@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Banner</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Import Anton font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <!-- html2canvas library for saving banners -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="controls">
+        <label for="banner-select">Select Banner:</label>
+        <select id="banner-select">
+            <option value="Banner.jpg">Banner.jpg</option>
+            <option value="Banner2.jpg">Banner2.jpg</option>
+            <option value="Banner3.jpg">Banner3.jpg</option>
+        </select>
+        
+        <button id="layout-toggle">Layout: Desktop</button>
+        <button id="title-toggle">Title: Single Line</button>
+        <button id="save-button">Save Banner</button>
+        <button id="save-ultra-hd-button">Save Ultra HD (2560×1440)</button>
+        
+        <!-- Color selection for title -->
+        <label for="title-color-selector">Title Color:</label>
+        <select id="title-color-selector">
+            <option value="#000000" selected>Black</option>
+            <option value="#FFFFFF">White</option>
+            <option value="#FF0000">Red</option>
+            <option value="#00FF00">Green</option>
+            <option value="#0000FF">Blue</option>
+            <option value="#FFFF00">Yellow</option>
+            <option value="#FF00FF">Magenta</option>
+            <option value="#00FFFF">Cyan</option>
+            <option value="#FFA500">Orange</option>
+            <option value="#800080">Purple</option>
+            <option value="#FFC0CB">Pink</option>
+            <option value="#A52A2A">Brown</option>
+            <option value="#808080">Gray</option>
+            <option value="#ADD8E6">Light Blue</option>
+            <option value="#90EE90">Light Green</option>
+        </select>
+        
+        <!-- Color selection for icon names -->
+        <label for="icon-color-selector">Icon Name Color:</label>
+        <select id="icon-color-selector">
+            <option value="#000000" selected>Black</option>
+            <option value="#FFFFFF">White</option>
+            <option value="#FF0000">Red</option>
+            <option value="#00FF00">Green</option>
+            <option value="#0000FF">Blue</option>
+            <option value="#FFFF00">Yellow</option>
+            <option value="#FF00FF">Magenta</option>
+            <option value="#00FFFF">Cyan</option>
+            <option value="#FFA500">Orange</option>
+            <option value="#800080">Purple</option>
+            <option value="#FFC0CB">Pink</option>
+            <option value="#A52A2A">Brown</option>
+            <option value="#808080">Gray</option>
+            <option value="#ADD8E6">Light Blue</option>
+            <option value="#90EE90">Light Green</option>
+        </select>
+    </div>
+    
+    <div class="banner-container cutline">
+        <div class="safe-area-indicator"></div>
+        <div class="cutline-overlay">
+            <div class="mobile-indicator"></div>
+        </div>
+        <div class="cutline-legend">
+            <div class="legend-item"><span class="legend-color" style="background-color: rgba(255, 0, 0, 0.8);"></span> Desktop (2560 × 423)</div>
+            <div class="legend-item"><span class="legend-color" style="background-color: rgba(0, 255, 0, 0.8);"></span> Tablet (1855 × 423)</div>
+            <div class="legend-item"><span class="legend-color" style="background-color: rgba(0, 0, 255, 0.8);"></span> Mobile Safe Area (1546 × 423)</div>
+        </div>
+        <div class="coordinate-display">
+            <span id="coordinates">X: 0px, Y: 0px</span>
+        </div>
+        <div class="title-overlay">
+            <h1 class="title-name">Joshua</h1>
+            <h1 class="title-name">Pavia Basco</h1>
+        </div>
+        <div class="content">
+            <div class="social-icons-mobile">
+                <div class="social-item">
+                    <a href="#"><img src="icons/facebook_icon.png" alt="Facebook"></a>
+                    <span class="social-name">Joshua Pavia Basco</span>
+                </div>
+                <div class="social-item">
+                    <a href="#"><img src="icons/instagram_icon.png" alt="Instagram"></a>
+                    <span class="social-name">@j0shi_3</span>
+                </div>
+                <div class="social-item">
+                    <a href="#"><img src="icons/tiktok_icon.png" alt="TikTok"></a>
+                    <span class="social-name">@juzwq_123</span>
+                </div>
+                <div class="social-item">
+                    <a href="#"><img src="icons/youtube_icon.png" alt="YouTube"></a>
+                    <span class="social-name">Joshua Pavia Basco</span>
+                </div>
+                <div class="social-icon-group">
+                    <div class="social-item github-icon">
+                        <a href="#"><img src="icons/github_icon.png" alt="GitHub"></a>
+                        <span class="social-name">Bascode-040612V1</span>
+                    </div>
+                    <div class="social-item website-icon">
+                        <a href="#"><img src="icons/website_icon.png" alt="Website"></a>
+                        <span class="social-name">joshuapaviabasco.is-great.net</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Viewport window for layout overlays -->
+        <div class="viewport-window"></div>
+        <div class="cutline-content">
+            <div class="title-container">
+                <h1 class="title-name">Joshua</h1>
+                <h1 class="title-name">Pavia Basco</h1>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
